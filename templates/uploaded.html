@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parkinson's Detection Result</title>
+
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa9nmKyGJia2FYJIKCxh3Pjh672LiN0Lmqqw&s" type="image/x-icon">
+
+    <style>
+      body {
+        background-image: url('https://www.advancedsciencenews.com/wp-content/uploads/2021/03/12011663.jpg'); /* Updated background image */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: hard-light;
+        background-color: teal;
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+      }
+
+      .header {
+        top: 0;
+        margin: 0;
+        margin-bottom: 15vh;
+        background-color: rgba(0, 0, 0, 0.6); 
+        height: 18vh;
+        display: grid;
+        place-items: center;
+      }
+
+      h1 {
+        font-size: 40pt;
+        color: #ffcc00; 
+      }
+
+      .content {
+        border: 1px solid #ccc;
+        opacity: 0.9;
+        font-size: 17pt;
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 30%;
+        padding: 15px;
+        border-radius: 5%;
+        display: inline-block;
+        height: 40vh;
+        vertical-align: top;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .file-input,
+      input[type="submit"],
+      button {
+        font-weight: bold;
+        color: black;
+        padding: 0.8em;
+        border: none;
+        border-radius: 10px;
+        background-color: #ffcc00;
+        cursor: pointer;
+        font-size: 1.2em;
+        margin-top: 15px;
+      }
+
+      .file-input::file-selector-button,
+      .upload-btn {
+        background-color: #2f6db9; /* Light blue for file selector */
+        color: white;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 14pt;
+        margin-top: 20px;
+        color: #d3d3d3;
+      }
+
+      .footer a {
+        color: #ffcc00;
+        text-decoration: none;
+      }
+
+      .disclaimer {
+        font-size: 16pt;
+        color: #e92424; /* Red color for disclaimer */
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      .container p {
+        font-size: 16pt;
+        line-height: 1.6;
+      }
+
+      .button-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Parkinson Disease Detection</h1>
+      <h1>Result </h1>
+    </div>
+    
+    <center>
+      <div class="content">
+        <p>{{ value }}</p>
+        <p>Confidence that User has Parkinson's: {{ probability }}%</p>
+
+        <p class="disclaimer">
+          DISCLAIMER
+        </p>
+        <p>This application is not a substitute for medical diagnosis. It is intended only as a tool for general informational purposes and should not be relied upon as the sole source for any health-related decisions. Always consult a doctor or medical professional for any health concerns you may have. Use this information at your own risk.</p>
+
+        <form action="/" method="get">
+          <input type="submit" value="Return Home">
+        </form>
+      </div>
+    </center>
+
+    <div class="footer">
+      <p>For more information, visit <a href="https://www.nature.com/articles/s41598-023-47568-w">website</a>.</p>
+    
+    </div>
+
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

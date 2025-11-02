@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Processing...</title>
+    <style>
+      body {
+        background-color: teal;
+        color: white;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 20vh;
+      }
+      img {
+        width: 100px;
+        margin-top: 20px;
+      }
+    </style>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const file = params.get('file');
+        if (file) {
+          // After 3 seconds, move to execute_pipeline
+          setTimeout(() => {
+            window.location.href = `/execute_pipeline?file=${encodeURIComponent(file)}`;
+          }, 3000);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Processing your audio file...</h1>
+    <p>Please wait while the system analyzes your speech.</p>
+    <img src="/static/img/loading.gif" alt="Loading">
+  </body>
+</html>

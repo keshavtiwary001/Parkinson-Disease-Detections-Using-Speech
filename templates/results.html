@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parkinson's Detection Result</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa9nmKyGJia2FYJIKCxh3Pjh672LiN0Lmqqw&s" type="image/x-icon">
+  <style>
+    body {
+      background-image: url('https://www.advancedsciencenews.com/wp-content/uploads/2021/03/12011663.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-blend-mode: hard-light;
+      background-color: teal;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    .header {
+      top: 0;
+      margin: 0;
+      margin-bottom: 15vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 18vh;
+      display: grid;
+      place-items: center;
+    }
+    h1 { font-size: 40pt; color: #ffcc00; }
+    .content {
+      border: 1px solid #ccc;
+      opacity: 0.95;
+      font-size: 17pt;
+      background-color: rgba(255, 255, 255, 0.85);
+      width: 35%;
+      padding: 25px;
+      border-radius: 15px;
+      display: inline-block;
+      height: auto;
+      vertical-align: top;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+    input[type="submit"] {
+      font-weight: bold;
+      color: black;
+      padding: 0.8em;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffcc00;
+      cursor: pointer;
+      font-size: 1.2em;
+      margin-top: 15px;
+    }
+    .footer { text-align: center; font-size: 14pt; margin-top: 30px; color: #d3d3d3; }
+    .footer a { color: #ffcc00; text-decoration: none; }
+    .disclaimer { font-size: 16pt; color: #e92424; font-weight: bold; margin-top: 30px; }
+    .result-status { font-size: 22pt; font-weight: bold; margin-bottom: 10px; }
+    .healthy { color: green; }
+    .parkinson { color: red; }
+    .uncertain { color: #b8860b; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Parkinson Disease Detection</h1>
+    <h1>Result</h1>
+  </div>
+
+  <center>
+    <div class="content">
+      {% if prediction == 'Parkinson' %}
+        <p class="result-status parkinson">🧠 Parkinson's Detected</p>
+      {% elif prediction == 'Healthy' %}
+        <p class="result-status healthy">✅ Healthy Speech Detected</p>
+      {% elif prediction == 'Unable to classify' %}
+        <p class="result-status uncertain">⚠️ Unable to classify the audio</p>
+      {% else %}
+        <p class="result-status uncertain">⚠️ {{ prediction }}</p>
+      {% endif %}
+
+      {% if probability and probability != "N/A" %}
+        <p>Confidence: {{ probability }}</p>
+      {% else %}
+        <p>Confidence: N/A</p>
+      {% endif %}
+
+      {% if file_name %}
+        <p><strong>File:</strong> {{ file_name }}</p>
+      {% endif %}
+
+      <p class="disclaimer">DISCLAIMER</p>
+      <p>This application is not a substitute for medical diagnosis. It is intended only as a tool for general informational purposes and should not be relied upon as the sole source for any health-related decisions. Always consult a doctor or medical professional for any health concerns you may have. Use this information at your own risk.</p>
+
+      <form action="/" method="get">
+        <input type="submit" value="Return Home">
+      </form>
+    </div>
+  </center>
+
+  <div class="footer">
+    <p>For more information, visit <a href="https://www.nature.com/articles/s41598-023-47568-w" target="_blank">this research article</a>.</p>
+  </div>
+
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
